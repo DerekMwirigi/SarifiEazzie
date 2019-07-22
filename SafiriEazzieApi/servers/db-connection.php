@@ -6,9 +6,9 @@
     @require_once('adodb/adodb-active-record.inc.php');
 
     $db_type  = 'mysqli';
-    $db_host  = 'localhost:3306';
+    $db_host  = 'localhost:3309';
     $db_user  = 'root';
-    $db_pass  = '';
+    $db_pass  = 'password';
     $db_name  = 'safirieazie';
 
     $db = ADONewConnection($db_type);

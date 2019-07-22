@@ -68,7 +68,7 @@
 <script>
     $(document).ready(function () {
         xit.files.readJsonFile('Config/locations.config.json').then(function (content) {
-            xit.storage.saveItem('locationModels', content)
+            xit.storage.saveItem('locationModels', JSON.stringify(content))
         }).catch(function (error) {
             alert(error)
         })

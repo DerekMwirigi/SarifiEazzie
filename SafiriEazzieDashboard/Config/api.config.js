@@ -1,5 +1,5 @@
 baseurl = {
-    url: 'http://localhost/SafiriEazzie/SafiriEazzieApi/api/',
+    url: 'http://localhost:81/DevOps/SafiriEazzie/SafiriEazzieApi/api/',
 }
 endpoints = {
     auth: {

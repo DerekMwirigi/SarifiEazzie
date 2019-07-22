@@ -8,7 +8,7 @@ NavBarController = {
                     htmlContent += '<span class="menu-title">Dashboard</span>'
                 htmlContent += '</a>'
             htmlContent += '</li>'
-            JSON.parse(content).forEach(navItemModel => {
+            content.forEach(navItemModel => {
                 htmlContent += '<li class="nav-item">'
                     htmlContent += '<a class="nav-link" data-toggle="collapse" href="#ui-basic' + navItemModel.id + '" aria-expanded="false" aria-controls="' + navItemModel.id + '">'
                         htmlContent += '<i class="menu-icon typcn typcn-' + navItemModel.icon + '"></i>'

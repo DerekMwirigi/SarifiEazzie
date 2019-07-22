@@ -43,6 +43,7 @@
         public function verifyPassword ($profileModel){
             $errors = array();
             $dbRes = $this->trySignIn($profileModel["uId"], $profileModel["uPassword"]);
+            //echo $profileModel["uPassword"] . ' :: '. md5($profileModel["uPassword"]);
             if($dbRes[0] == 1){
                 $res = array(
                     "success"=>true,
