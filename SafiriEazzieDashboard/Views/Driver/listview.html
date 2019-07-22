@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Drivers </h4>
+        <p class="card-description"> List of available drivers</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Names</th>
+                    <th>ID No</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbDrivers">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="Controllers/DriverController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        DriverController.displayDriversListView(JSON.parse(xit.storage.getValue('driverModels')))
+    })
+</script>

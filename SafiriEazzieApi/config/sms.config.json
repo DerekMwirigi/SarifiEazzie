@@ -1,0 +1,12 @@
+{
+    "accounts":{
+        "setup":{
+            "text":"Welcome to {companyName}, your code is {code}. From {companyName}."
+        }
+    },
+    "otp":{
+        "request":{
+            "text":"OTP From {companyName}, Hey man. Request code is {code}."
+        }
+    }
+}

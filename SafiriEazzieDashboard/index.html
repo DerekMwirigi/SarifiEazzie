@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendors/iconfonts/ionicons/css/ionicons.css">
+  <link rel="stylesheet" href="assets/vendors/iconfonts/typicons/src/font/typicons.css">
+  <link rel="stylesheet" href="assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="assets/css/shared/style.css">
+  <link rel="stylesheet" href="assets/css/demo_1/style.css">
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Loading...</title>
+  <script src="Config/app.config.js"></script>
+  <script src="Config/api.config.js"></script>
+  <script src="Controllers/NavBarController.js"></script>
+  <script src="Utils/Observer.js"></script>
+  <style>
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      margin-top: 10%;
+    }
+
+    #map {
+      height: 400px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller" id="dvContainer">
+    <div class="main-panel">
+      <footer class="footer" hidden>
+        <div class="container-fluid clearfix">
+          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block" id="spFooter"></span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Contact DevTeam<i
+              class="mdi mdi-heart text-danger"></i></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Loading...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast">
+    <div class="toast-header">
+      <strong class="mr-auto text-primary">Header</strong>
+      <small class="text-muted">Message</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+      Some text inside the toast body
+    </div>
+  </div>
+  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="assets/vendors/js/vendor.bundle.addons.js"></script>
+  <script src="assets/js/shared/off-canvas.js"></script>
+  <script src="assets/js/shared/misc.js"></script>
+  <script src="assets/js/demo_1/dashboard.js"></script>
+  <script src="Resources/Scripts/xit.js"></script>
+  <script src="Controllers/AuthController.js"></script>
+  <script lang="javascript">
+    $(document).ready(function () {
+      AuthController.sessionState()
+      xit.storage.destroy('currentView')
+    })
+    function navClick(view, payLoad) {
+      var viewItems = $(view).attr('view').split("|")
+      view = viewItems[0]
+      if (typeof viewItems[1] !== 'undefined') {
+        xit.ui.openmodal('POST', null, payLoad, view, '#myModal', true)
+      } else {
+        xit.ui.openview('POST', null, payLoad, view, '#panelMainContent', true)
+      }
+    }
+  </script>
+</body>
+
+</html>

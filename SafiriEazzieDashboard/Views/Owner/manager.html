@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-lg-4 grid-margin stretch-card" id="panelNewOwner">
+
+    </div>
+    <div class="col-lg-8 grid-margin stretch-card" id="panelOwners">
+
+    </div>
+    <div class="col-lg-12" id="filters">
+        <div style="float: right;"><span id="spRange"></span>
+            <div class="btn-group">
+                <button class="btn btn-light" type="button" id="btnPrev"><i class="fa fa-angle-left"></i></button>
+                <button class="btn btn-light" type="button" id="btnNext"><i class="fa fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="Controllers/OwnerController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        xit.ui.openview('POST', null, null, 'Views/Owner/new.html', '#panelNewOwner', true)
+        OwnerController.getOwners()
+    })
+</script>

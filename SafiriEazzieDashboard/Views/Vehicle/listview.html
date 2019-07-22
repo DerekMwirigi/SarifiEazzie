@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Vehicles </h4>
+        <p class="card-description"> List of available vehicles</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Reg Number</th>
+                    <th>Owner</th>
+                    <th>Make <em> :: </em> Model</th>
+                    <th>Date Purchase</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbVehicles">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="Controllers/VehicleController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        VehicleController.displayVehiclesListView(JSON.parse(xit.storage.getValue('vehicleModels')))
+    })
+</script>

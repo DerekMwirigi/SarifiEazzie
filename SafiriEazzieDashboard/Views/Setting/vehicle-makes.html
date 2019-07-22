@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-lg-4 grid-margin stretch-card" id="panelNewMake">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">New vehicle make details</h2>
+                <p class="card-description"> Fill the form </p>
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        <label for="tMake" class="col-sm-3 col-form-label">Make</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="tMake" placeholder="Enter route name">
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-success mr-2" id="lnCreate">Create</a>
+                    <a href="#" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 grid-margin stretch-card" id="panelMakes">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Makes </h4>
+                <p class="card-description"> List of available makes</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Make</th>
+                            <th>Models</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tVMakes">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="Controllers/SettingController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        $('#lnCreate').click(function (){
+            SettingController.createVehicleMake(this, JSON.stringify({
+                make: $('#tMake').val()
+            }))
+        })
+        SettingController.getVehicleMakes()
+    })
+</script>

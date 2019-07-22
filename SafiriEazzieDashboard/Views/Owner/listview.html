@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Owners </h4>
+        <p class="card-description"> List of available owners</p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Names</th>
+                    <th>ID No</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tbOwners">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="Controllers/OwnerController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        OwnerController.displayOwnersListView(JSON.parse(xit.storage.getValue('ownerModels')))
+    })
+</script>

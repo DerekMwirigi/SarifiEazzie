@@ -1,0 +1,73 @@
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">New vehicle details</h2>
+        <p class="card-description"> Fill the form </p>
+        <form class="forms-sample">
+            <div class="form-group row">
+                <label for="dMake" class="col-md-3 col-form-label">Make</label>
+                <div class="col-md-9">
+                    <select id="dMake" class="form-control">
+                        <option value="0" selected disabled>** Choose Make ** </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dModel" class="col-md-3 col-form-label">Model</label>
+                <div class="col-md-9">
+                    <select id="dModel" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tRegNo" class="col-md-3 col-form-label">Reg Number</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="tRegNo" placeholder="Enter reg number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="dOwner" class="col-md-3 col-form-label">Owner</label>
+                <div class="col-md-9">
+                    <select id="dOwner" class="form-control">
+                        <option value="0" selected disabled>** Choose Owner ** </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tCost" class="col-md-3 col-form-label">Cost</label>
+                <div class="col-md-9">
+                    <input type="number" class="form-control" id="tCost" placeholder="Enter cost">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tDoP" class="col-md-3 col-form-label">Date of Pur</label>
+                <div class="col-md-9">
+                    <input type="date" class="form-control" id="tDoP" placeholder="Enter mobile">
+                </div>
+            </div>
+            <a href="#" class="btn btn-success mr-2" id="lnCreate">Create</a>
+            <a href="#" class="btn btn-light">Cancel</a>
+        </form>
+    </div>
+</div>
+
+<script src="Controllers/VehicleController.js"></script>
+<script lang="javascript">
+    $(document).ready(function () {
+        VehicleController.loadMakes()
+        VehicleController.loadOwners()
+        $('#dMake').change(function () {
+            VehicleController.loadModels($(this).val())
+        })
+        $('#lnCreate').click(function () {
+            VehicleController.create(this, JSON.stringify({
+                onwerId: $('#dOwner').val(),
+                regNumber: $('#tRegNo').val(),
+                makeId: $('#dMake').val(),
+                modelId: $('#dModel').val(),
+                cost: $('#tCost').val(),
+                datePurchase: $('#tDoP').val()
+            }))
+        })
+    })
+</script>

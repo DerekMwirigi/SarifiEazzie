@@ -1,0 +1,6 @@
+{
+    "verifyOtpValidModel":{
+        "mobile":"String|9|12",
+        "otpCode":"Int|5|5"
+    }
+}
