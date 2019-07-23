@@ -39,6 +39,7 @@ VehicleController = {
     displayVehiclesListView :function (vehicleModels){
         var htmlContent = ''
         vehicleModels.forEach(vehicleModel => {
+            console.log(vehicleModel)
             htmlContent += '<tr>'
             htmlContent += '<td>' + vehicleModel.id + '</td>'
             htmlContent += '<td>' + vehicleModel.regNumber + '</td>'
@@ -84,7 +85,7 @@ VehicleController = {
             response = JSON.parse(response)
             if(response.status_code == 1){
                 response.data.forEach(vModel => {
-                    $('#dModel').append('<option value="'+vModel.model+'">'+vModel.model+'</option>')
+                    $('#dModel').append('<option value="'+vModel.id+'">'+vModel.model+'</option>')
                 })
             }else{
                 Observer.displayErrors(response)

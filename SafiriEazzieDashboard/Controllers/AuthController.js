@@ -23,6 +23,22 @@ AuthController = {
             alert(error)
         })
     },
+    signUp : function (view, authModel){
+        $(view).text('Loading...')
+        xit.request.post(null, authModel, endpoints.auth.signUp).then(function (response){
+            response = JSON.parse(response)
+            if(response.status_code == 1){
+                xit.storage.saveItem('loggedInUser', JSON.stringify(response.data))
+                location.reload()
+            }else { 
+                Observer.displayErrors(response)
+            }
+            $(view).text('Sign In')
+        }).catch(function (error){
+            $(view).text('Sign In')
+            alert(error)
+        })
+    },
     signOut : function (){
         if(confirm('About to sign out. Continue?')){
             xit.storage.destroy('loggedInUser')

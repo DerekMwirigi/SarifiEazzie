@@ -39,5 +39,18 @@
         "joinModel":null,
         "pageNo":1,
         "perPage":50
+    },
+    "getListVehiclesOwner":{
+        "entityType":7,
+        "sqlStatementIn":null,
+        "likeliHood":false,
+        "columns":{
+            "id":"id",
+            "firstName":"firstName"
+        },
+        "keyModel":null,
+        "joinModel":null,
+        "pageNo":1,
+        "perPage":50
     }
 }

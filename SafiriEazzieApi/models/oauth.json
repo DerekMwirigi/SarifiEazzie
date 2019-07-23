@@ -2,5 +2,12 @@
     "verifyOtpValidModel":{
         "mobile":"String|9|12",
         "otpCode":"Int|5|5"
+    },
+    "validsignUpModel":{
+        "firstName":"String|2|30",
+        "lastName":"String|2|30",
+        "mobile":"String|12|12",
+        "email":"String|6|50",
+        "password": "String|6|12"
     }
 }

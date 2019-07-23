@@ -6,7 +6,7 @@
                 "state":1,
                 "url":"api/common/create-route.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "fetch-routes":{
                 "state":1,
@@ -17,7 +17,7 @@
                 "state":1,
                 "url":"api/common/create-vehicle-make.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "fetch-vehicle-makes":{
                 "state":1,
@@ -33,6 +33,14 @@
                 "state":1,
                 "url":"api/common/fetch-owners-fetch.php",
                 "method":"GET"
+            }
+        },
+        "analysis":{
+            "stats":{
+                "state":1,
+                "url":"api/analysis/stats.php",
+                "method":"GET",
+                "oauthToken":0
             }
         },
         "mpesa":{
@@ -74,6 +82,11 @@
                 "state":1,
                 "url":"api/oauth/verifyOTP.php",
                 "method":"POST"
+            },
+            "signup":{
+                "state":1,
+                "url":"api/oauth/signup.php",
+                "method":"POST"
             }
         },
         "accounts":{
@@ -93,7 +106,7 @@
                 "state":1,
                 "url":"api/accounts/edit.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "editPassword":{
                 "state":1,
@@ -105,7 +118,7 @@
                 "state":1,
                 "url":"api/accounts/view.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             }
         },
         "driver":{
@@ -113,19 +126,19 @@
                 "state":1,
                 "url":"api/driver/create.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "edit":{
                 "state":1,
                 "url":"api/driver/edit.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "delete":{
                 "state":1,
                 "url":"api/driver/delete.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "fetch":{
                 "state":1,
@@ -139,19 +152,19 @@
                 "state":1,
                 "url":"api/owner/create.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "edit":{
                 "state":1,
                 "url":"api/owner/edit.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "delete":{
                 "state":1,
                 "url":"api/owner/delete.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "fetch":{
                 "state":1,
@@ -165,19 +178,19 @@
                 "state":1,
                 "url":"api/vehicle/create.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "edit":{
                 "state":1,
                 "url":"api/vehicle/edit.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "delete":{
                 "state":1,
                 "url":"api/vehicle/delete.php",
                 "method":"POST",
-                "oauthToken":1
+                "oauthToken":0
             },
             "fetch":{
                 "state":1,

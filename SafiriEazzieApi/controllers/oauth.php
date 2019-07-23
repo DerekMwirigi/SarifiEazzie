@@ -14,6 +14,41 @@
             $this->oauthModel = json_decode(file_get_contents("../../models/oauth.json"), true);
         }
 
+        public function signUp ($authModel){
+            $errors = array();
+            $validRes = $this->utils->validateModel($authModel, $this->oauthModel["validsignUpModel"]);
+            if($validRes["success"]){
+                $authModel["code"] = $this->utils->generateRandom(1111, 9999, 4);
+                $password = $authModel["password"];
+                $authModel["password"] = md5($password);
+                $dbRes = $this->insert("users", $authModel);
+                if($dbRes[0] == 1){
+                    return array(
+                        "success"=>true,
+                        "errors"=>null,
+                        "status_code"=>1,
+                        "status_message"=>"Successful.",
+                        "message"=>"item was created.",
+                        "data"=>$this->verifyPassword(array(
+                            "uId"=>$authModel["email"],
+                            "uPassword"=>$password
+                        ))["data"]
+                    );
+                }else{
+                    array_push($errors, $dbRes[1]);
+                    return array(
+                        "success"=>true,
+                        "errors"=>$errors,
+                        "status_code"=>0,
+                        "status_message"=>"Failed.",
+                        "message"=>"item was not created.",
+                        "data"=>null
+                    );
+                }
+            }
+            return $validRes;
+        }
+
         public function verifyPhone ($profileModel){
             $errors = array();
             $dbRes = $this->tryAccounts($profileModel["mobile"], $profileModel["roleId"]);
@@ -43,7 +78,6 @@
         public function verifyPassword ($profileModel){
             $errors = array();
             $dbRes = $this->trySignIn($profileModel["uId"], $profileModel["uPassword"]);
-            //echo $profileModel["uPassword"] . ' :: '. md5($profileModel["uPassword"]);
             if($dbRes[0] == 1){
                 $res = array(
                     "success"=>true,
@@ -200,7 +234,7 @@
         } 
 
         private function trySignIn ($email, $password){
-            $accountTypes = array("users");
+            $accountTypes = array("users", "owners");
             $dbRes = array();
             foreach($accountTypes as $accountType){
                 $dbRes = $this->fetchRow($accountType, array("email"=>$email, "password"=>$this->utils->encryptPassword($password)));

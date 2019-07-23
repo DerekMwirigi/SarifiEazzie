@@ -15,7 +15,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex">
                             <div class="wrapper">
-                                <h3 class="mb-0 font-weight-semibold">4</h3>
+                                <h3 class="mb-0 font-weight-semibold" id="h3DriversCount">...</h3>
                                 <h5 class="mb-0 font-weight-medium text-primary">Drivers</h5>
                             </div>
                             <div class="wrapper my-auto ml-auto ml-lg-4">
@@ -26,7 +26,7 @@
                     <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
                         <div class="d-flex">
                             <div class="wrapper">
-                                <h3 class="mb-0 font-weight-semibold">40</h3>
+                                <h3 class="mb-0 font-weight-semibold" id="h3OwnersCount">...</h3>
                                 <h5 class="mb-0 font-weight-medium text-primary">Onwers</h5>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
                         <div class="d-flex">
                             <div class="wrapper">
-                                <h3 class="mb-0 font-weight-semibold">30</h3>
+                                <h3 class="mb-0 font-weight-semibold" id="h3VehiclesCount">...</h3>
                                 <h5 class="mb-0 font-weight-medium text-primary">Vehicles</h5>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                     <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
                         <div class="d-flex">
                             <div class="wrapper">
-                                <h3 class="mb-0 font-weight-semibold">2</h3>
+                                <h3 class="mb-0 font-weight-semibold" id="h3UsersCount">...</h3>
                                 <h5 class="mb-0 font-weight-medium text-primary">Users</h5>
                             </div>
                         </div>
@@ -64,9 +64,10 @@
         </div>
     </div>
 </div>
-
+<script src="Controllers/DashboardController.js"></script>
 <script>
     $(document).ready(function () {
+        DashboardController.stats()
         xit.files.readJsonFile('Config/locations.config.json').then(function (content) {
             xit.storage.saveItem('locationModels', JSON.stringify(content))
         }).catch(function (error) {
@@ -98,4 +99,4 @@
     }
 </script>
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwP5r6-nHIE8Jbjzwbbdf8lv2RUj1WbNE&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM899n0N1xwgmD3c3RbC2I0xE3hYgjZM&callback=initMap"></script>

@@ -1,0 +1,123 @@
+<div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+            <div class="col-lg-4 mx-auto">
+                <div class="auto-form-wrapper">
+                    <div>
+                        <div class="form-group">
+                            <label class="label">First Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="First Name" id="tFirstName">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Last Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Lats Name" id="tLastName">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Mobile</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="Mobile" id="tMobile">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Email</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Email" id="tEmail">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="*********" id="tPassword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label">Confirm Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" placeholder="*********"
+                                    id="tConfirmPassword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="mdi mdi-check-circle-outline"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary submit-btn btn-block" id="btSignUp">Sign Up</button>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">
+
+                        </div>
+                        <div class="text-block text-center my-3">
+                            <span class="text-small font-weight-semibold">Already having an account?</span>
+                            <a href="#" class="text-black text-small" id="lnSignInUi">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="auth-footer" hidden>
+                    <li>
+                        <a href="#">Conditions</a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                    <li>
+                        <a href="#">Terms</a>
+                    </li>
+                </ul>
+                <p class="footer-text text-center" id="spFooterSignIn"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script lang="javascript">
+    $(document).ready(function () {
+        $('#lnSignInUi').click(function () {
+            xit.ui.openview('POST', null, null, 'Views/Auth/signIn.html', '#dvContainer', false)
+        })
+        $('#btSignUp').click(function () {
+            if ($('#tPassword').val() == $('#tConfirmPassword').val()) {
+                AuthController.signUp(this, JSON.stringify({
+                    firstName: $('#tFirstName').val(),
+                    lastName: $('#tLastName').val(),
+                    mobile: $('#tMobile').val(),
+                    email: $('#tEmail').val(),
+                    password: $('#tPassword').val(),
+                    avatar: 'https://cdn1.iconfinder.com/data/icons/rcons-user-action/512/user-512.png'
+                }))
+            } else {
+                alert('Password mismatch')
+            }
+        })
+    })
+</script>

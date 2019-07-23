@@ -4,6 +4,7 @@ baseurl = {
 endpoints = {
     auth: {
         signIn: baseurl.url + 'oauth/verifyPassword.php',
+        signUp: baseurl.url + 'oauth/signup.php',
     },
     driver: {
         create: baseurl.url + 'driver/create.php',
@@ -24,5 +25,8 @@ endpoints = {
         fetch_vehicle_makes: baseurl.url + 'common/fetch-vehicle-makes.php',
         fetch_vehicle_models: baseurl.url + 'common/fetch-vehicle-models.php',
         fetch_owners: baseurl.url + 'common/fetch-owners-fetch.php'
+    },
+    analysis: {
+        stats: baseurl.url + 'analysis/stats.php'
     }
 }
