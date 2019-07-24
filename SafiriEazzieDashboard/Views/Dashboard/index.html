@@ -58,7 +58,7 @@
             <div class="card-body">
                 <h4 class="card-title mb-0"></h4>
                 <div class="d-flex flex-column flex-lg-row" id="map" style="height: 600px">
-                    
+
                 </div>
             </div>
         </div>
@@ -66,15 +66,28 @@
 </div>
 <script src="Controllers/DashboardController.js"></script>
 <script>
-    $(document).ready(function () {
-        DashboardController.stats()
-        xit.files.readJsonFile('Config/locations.config.json').then(function (content) {
-            xit.storage.saveItem('locationModels', JSON.stringify(content))
-        }).catch(function (error) {
-            alert(error)
+    var firebaseConfig = {
+        apiKey: "AIzaSyCBypllxMiZ4w3UKW6phIaxbmeAVt_Me9E",
+        authDomain: "myvehicle2-1e00d.firebaseapp.com",
+        databaseURL: "https://myvehicle2-1e00d.firebaseio.com",
+        projectId: "myvehicle2-1e00d",
+        storageBucket: "myvehicle2-1e00d.appspot.com",
+        messagingSenderId: "634393868696",
+        appId: "1:634393868696:web:b270afd79e37c1a3"
+    };
+    firebase.initializeApp(firebaseConfig)
+    var firebaseRef = firebase.database().ref().child("db/vehicle_tracker/")
+    firebaseRef.once('value').then(snapshot => {
+        let locationModels = []
+        snapshot.forEach(item => {
+            var temp = item.val();
+            locationModels.push({name: '', lat: temp.latitude, lon: temp.longitude})
         })
+        initMap(locationModels)
     })
-    function initMap() {
+    
+
+    function initMap(locationModels) {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
             center: new google.maps.LatLng(1.2921, 36.8219),
@@ -82,8 +95,7 @@
         });
         var infowindow = new google.maps.InfoWindow()
         var marker, i
-        
-        JSON.parse(xit.storage.getValue('locationModels')).forEach(locationModel => {
+        locationModels.forEach(locationModel => {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locationModel.lat, locationModel.lon),
                 map: map
@@ -91,8 +103,6 @@
             google.maps.event.addListener(marker, 'click', (function (marker) {
                 return function () {
                     alert(locationModel.name)
-                    //   infowindow.setContent(locationModel.name);
-                    //   infowindow.open(map, marker);
                 }
             }));
         })
