@@ -66,48 +66,58 @@
 </div>
 <script src="Controllers/DashboardController.js"></script>
 <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyCBypllxMiZ4w3UKW6phIaxbmeAVt_Me9E",
-        authDomain: "myvehicle2-1e00d.firebaseapp.com",
-        databaseURL: "https://myvehicle2-1e00d.firebaseio.com",
-        projectId: "myvehicle2-1e00d",
-        storageBucket: "myvehicle2-1e00d.appspot.com",
-        messagingSenderId: "634393868696",
-        appId: "1:634393868696:web:b270afd79e37c1a3"
-    };
-    firebase.initializeApp(firebaseConfig)
-    var firebaseRef = firebase.database().ref().child("db/vehicle_tracker/")
-    firebaseRef.once('value').then(snapshot => {
-        let locationModels = []
-        snapshot.forEach(item => {
-            var temp = item.val();
-            locationModels.push({name: item.key, lat: temp.latitude, lon: temp.longitude})
-        })
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
-            center: new google.maps.LatLng(1.2921, 36.8219),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        var infowindow = new google.maps.InfoWindow()
-        var marker, i
-        locationModels.forEach(locationModel => {
-            marker = new google.maps.Marker({
-                title: locationModel.name,
-                position: new google.maps.LatLng(locationModel.lat, locationModel.lon),
-                map: map
-            })
-            google.maps.event.addListener(marker, 'click', (function (marker) {
-                return function () {
-                    alert(locationModel.name)
-                }
-            }));
-        })
+    $(document).ready(function () {
+        DashboardController.stats()
+        var firebaseConfig = {
+            apiKey: "AIzaSyCBypllxMiZ4w3UKW6phIaxbmeAVt_Me9E",
+            authDomain: "myvehicle2-1e00d.firebaseapp.com",
+            databaseURL: "https://myvehicle2-1e00d.firebaseio.com",
+            projectId: "myvehicle2-1e00d",
+            storageBucket: "myvehicle2-1e00d.appspot.com",
+            messagingSenderId: "634393868696",
+            appId: "1:634393868696:web:b270afd79e37c1a3"
+        };
+        firebase.initializeApp(firebaseConfig)
+        setInterval(fetchData, (1000 * 10));
     })
-    function initMap() {
-      
+
+    function fetchData() {        
+        var firebaseRef = firebase.database().ref().child("db/vehicle_tracker/")
+        firebaseRef.once('value').then(snapshot => {
+            let locationModels = []
+            snapshot.forEach(item => {
+                var temp = item.val();
+                locationModels.push({ name: item.key, lat: temp.latitude, lon: temp.longitude })
+            })
+            var image = 'https://image.flaticon.com/icons/svg/15/15923.svg';
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: new google.maps.LatLng(1.2921, 36.8219),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var infowindow = new google.maps.InfoWindow()
+            var marker, i
+            locationModels.forEach(locationModel => {
+                marker = new google.maps.Marker({
+                    title: locationModel.name,
+                    lable: locationModel.name,
+                    animation: google.maps.Animation.DROP,
+                    position: new google.maps.LatLng(locationModel.lat, locationModel.lon),
+                    map: map
+                })
+                google.maps.event.addListener(marker, 'click', (function (marker) {
+                    return function () {
+                        alert(locationModel.name)
+                    }
+                }));
+            })
+        })
     }
-  
+
+    function initMap() {
+
+    }
+
 </script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM899n0N1xwgmD3c3RbC2I0xE3hYgjZM&callback=initMap"></script>
