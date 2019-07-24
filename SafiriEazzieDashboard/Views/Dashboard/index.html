@@ -81,13 +81,9 @@
         let locationModels = []
         snapshot.forEach(item => {
             var temp = item.val();
-            locationModels.push({name: '', lat: temp.latitude, lon: temp.longitude})
+            locationModels.push({name: item.key, lat: temp.latitude, lon: temp.longitude})
         })
-        initMap(locationModels)
-    })
-    
 
-    function initMap(locationModels) {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 6,
             center: new google.maps.LatLng(1.2921, 36.8219),
@@ -97,6 +93,7 @@
         var marker, i
         locationModels.forEach(locationModel => {
             marker = new google.maps.Marker({
+                title: locationModel.name,
                 position: new google.maps.LatLng(locationModel.lat, locationModel.lon),
                 map: map
             })
@@ -106,7 +103,11 @@
                 }
             }));
         })
+    })
+    function initMap() {
+      
     }
+  
 </script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuM899n0N1xwgmD3c3RbC2I0xE3hYgjZM&callback=initMap"></script>
